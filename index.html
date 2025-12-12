@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Kareem avec hicham - Saveurs Authentiques du Maroc</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #8aac4b; /* Noir profond */
+            color: #D4AF37; /* Doré */
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3 {
+            font-family: 'Amiri', serif;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: scale(1.05);
+        }
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('https://via.placeholder.com/1920x1080/000000/FFD700?text=Ramadan+Ambiance') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #32CD32; /* Vert émeraude */
+        }
+        .lanterns {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            animation: float 3s ease-in-out infinite;
+        }
+        .lanterns svg {
+            width: 50px;
+            height: 50px;
+            fill: #FFD700;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Products Section */
+        .products {
+            padding: 60px 0;
+            background-color: #000;
+        }
+        .products h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #FFD700;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: linear-gradient(135deg, #32CD32, #000);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(212, 175, 55, 0.5);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-card h3 {
+            padding: 15px;
+            color: #FFD700;
+        }
+        .product-card p {
+            padding: 0 15px;
+            color: #FFF;
+        }
+        .product-card .price {
+            padding: 0 15px 15px;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        /* Specialties Section */
+        .specialties {
+            padding: 60px 0;
+            background: url('https://via.placeholder.com/1920x600/000000/32CD32?text=Moroccan+Motifs') center/cover no-repeat;
+            position: relative;
+        }
+        .specialties::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .specialties-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .specialties h2 {
+            margin-bottom: 40px;
+            color: #FFD700;
+        }
+        .specialty-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .specialty-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 0;
+            background-color: #000;
+            text-align: center;
+        }
+        .about img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 60px 0;
+            background-color: #32CD32;
+            color: #000;
+        }
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .testimonial-slider {
+            overflow: hidden;
+            position: relative;
+        }
+        .testimonial-list {
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
+        .testimonial-item {
+            min-width: 300px;
+            margin: 0 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Countdown Section */
+        .countdown {
+            padding: 60px 0;
+            background-color: #000;
+            text-align: center;
+        }
+        .countdown h2 {
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+        .timer {
+            font-size: 2rem;
+            color: #32CD32;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 0;
+            background-color: #32CD32;
+            text-align: center;
+        }
+        .contact h2 {
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 20px 0;
+            background-color: #167e4a;
+            text-align: center;
+            color: #a38f1c;
+        }
+        .footer .logo {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.2rem; }
+            .product-grid { grid-template-columns: 1fr; }
+            .specialty-list { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="lanterns">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="hero-content">
+            <h1>Ramadan Kareem avec hicham – Saveurs Authentiques du Maroc</h1>
+            <p>Chabakia & douceurs artisanales faites avec amour</p>
+            <a href="https://wa.me/663396697?text=Bonjour%2C%20je%20souhaite%20commander%20des%20douceurs%20Ramadan." class="btn-whatsapp">Commander sur WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products container">
+        <h2>Nos Produits</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://i.pinimg.com/originals/e8/d2/c2/e8d2c2bd5d1aaa3a77a7c3da95303295.jpg" alt="Chabakia">
+                <h3>Chabakia aux Amandes</h3>
+                <p>Douceur croustillante au miel.</p>
+                <div class="price">100mad/1kg</div>
+                <a href="https://wa.me/663396697?text=Je%20commande%20Chabakia." class="btn-whatsapp">Commander</a>
+            </div>
+            <div class="product-card">
+                <img src="https://i1.wp.com/cuisinedefadila.com/wp-content/uploads/2015/07/briwates-aux-amandes-8-sur-10.jpg" alt="Briwat">
+                <h3>Briwat aux Amandes</h3>
+                <p>Feuilletés garnis d'amandes.</p>
+                <div class="price">150mad/1kg</div>
+                <a href="https://wa.me/663396697?text=Je%20commande%20Briwat%20aux%20Amandes." class="btn-whatsapp">Commander</a>
+            </div>
+            <!-- Ajouter d'autres produits similaires -->
+            <div class="product-card">
+                <img src="https://fac.img.pmdstatic.net/fit/https.3A.2F.2Fi.2Epmdstatic.2Enet.2Ffac.2F2022.2F02.2F26.2Ff9027c82-7154-419b-9ee7-6618c4981567.2Ejpeg/970x485/quality/80/crop-from/center/sellou-marocain.jpeg" alt="Sellou">
+                <h3>Sellou</h3>
+                <p>Pâte d'amandes et sésame.</p>
+                <div class="price">150mad/1kg</div>
+                <a href="https://wa.me/663396697?text=Je%20commande%20Sellou." class="btn-whatsapp">Commander</a>
+            </div>
+            <div class="product-card">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.xW11dP3tOIONn_LLVSoZ2wHaIh?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Baghrir">
+                <h3>chabakia</h3>
+                <p>Douceur croustillante au miel.</p>
+                <div class="price">80mad/1kg</div>
+                <a href="https://wa.me/663396697?text=Je%20commande%20chabakia" class="btn-whatsapp">Commander</a>
+            </div>
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/R.45f103473906c0ff39dda60477aac25e?rik=G%2fDKiLjz%2fDThNg&pid=ImgRaw&r=0" alt="Msemen">
+                <h3>Msemen</h3>
+                <p>Pain feuilleté marocain.</p>
+                <div class="price">4mad/1</div>
+                <a href="https://wa.me/663396697?text=Je%20commande%20Msemen." class="btn-whatsapp">Commander</a>
+            </div>
+            <div class="product-card">
+                <img src="https://i1.wp.com/cuisinedefadila.com/wp-content/uploads/2013/07/88604964_o.jpg" alt="Cornes de Gazelle">
+                <h3>Cornes de Gazelle</h3>
+                <p>Biscuits en forme de corne.</p>
+                <div class="price">150mad/1kg</div>
+                <a href="https://wa.me/663396697?text=Je%20commande%20Cornes%20de%20Gazelle." class="btn-whatsapp">Commander</a>
+            </div>
+            <div class="product-card">
+                <img src="https://ralia-patisserie.fr/wp-content/uploads/2023/03/9CA16A55-633A-4DA7-BD6D-21B563F5CF8D-768x576.png" alt="Chabakia">
+                <h3>sigar aux Amandes</h3>
+                <p>Feuilletés garnis d'amandes..</p>
+                <div class="price">150mad/1kg</div>
+                <a href="https://wa.me/663396697?text=Je%20commande%20sigar." class="btn-whatsapp">Commander</a>
+            </div>
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/R.3ecf8b4deadda5080f6754787c25622f?rik=JInKhqhTSws1WA&riu=http%3a%2f%2fwww.mesinspirationsculinaires.com%2fwp-content%2fuploads%2f2015%2f06%2fcigares-aux-cacahuetes-1.jpg&ehk=c29EOz7UGDpkgNLCO0FIjn%2bXczM0jcK7v6AX13WOwtA%3d&risl=&pid=ImgRaw&r=0" alt="Chabakia">
+                <h3>sigar aux Cacahuète</h3>
+                <p>Feuilletés garnis Cacahuète.</p>
+                <div class="price">80mad/1kg</div>
+                <a href="https://wa.me/663396697?text=Je%20commande%20sigar." class="btn-whatsapp">Commander</a>
+            </div>
+            <div class="product-card">
+                <img src="https://4.bp.blogspot.com/-MGhapxGCql0/Ubl7fyKvt7I/AAAAAAAAAkk/7p8-uPK1zdo/s1600/DSC01028.JPG" alt="Chabakia">
+                <h3>briwat aux Cacahuète</h3>
+                <p>Feuilletés garnis Cacahuète.</p>
+                <div class="price">80mad/1kg</div>
+                <a href="https://wa.me/663396697?text=Je%20commande%20briwat." class="btn-whatsapp">Commander</a>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section class="specialties">
+        <div class="specialties-content container">
+            <h2>Nos Spécialités Ramadan</h2>
+            <div class="specialty-list">
+                <div class="specialty-item">
+                    <h3>Chabakia Premium</h3>
+                    <p>Version raffinée avec miel bio.</p>
+                </div>
+                <div class="specialty-item">
+                    <h3>Briwat au Miel</h3>
+                    <p>Garni de miel et amandes.</p>
+                </div>
+                <div class="specialty-item">
+                    <h3>Sellou Traditionnel</h3>
+                    <p>Réalisé selon la recette ancestrale.</p>
+                </div>
+                <div class="specialty-item">
+                    <h3>Plateaux Famille</h3>
+                    <p>Assortiment pour 4-6 personnes.</p>
+                </div>
+                <div class="specialty-item">
+                    <h3>Kit Ramadan</h3>
+                    <p>Pack spécial avec tous les essentiels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about container">
+        <h2>Notre Histoire</h2>
+        <img src="https://static.vecteezy.com/system/resources/previews/019/806/265/original/ramadan-fasting-golden-logo-design-illustration-fasting-logo-free-vector.jpg" alt="Cuisine artisanale">
+        <p>Depuis des générations, notre famille perpétue la tradition des douceurs marocaines. Préparées avec des ingrédients naturels et beaucoup d'amour, nos produits sont le reflet de l'authenticité marocaine.</p>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials container">
+        <h2>Témoignages Clients</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial-list">
+                <div class="testimonial-item">
+                    <p>"Délicieux ! Authentique et frais."</p>
+                    <p>- Fatima ★★★★★</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"Parfait pour Ramadan. Recommandé !"</p>
+                    <p>- Ahmed ★★★★★</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"Qualité exceptionnelle."</p>
+                    <p>- Leila ★★★★★</p>
+                </div>
+                <!-- Dupliquer pour l'effet scroll -->
+                <div class="testimonial-item">
+                    <p>"Délicieux ! Authentique et frais."</p>
+                    <p>- Fatima ★★★★★</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown container">
+        <h2>Compte à Rebours Ramadan</h2>
+        <div class="timer" id="countdown-timer">Chargement...</div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact container">
+        <h2>Contact & Livraison</h2>
+        <p>WhatsApp : +21263396697</p>
+        <p>Localisation : kenitra.irchad</p>
+        <p>Horaires : Livraison soirée et journée</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="logo">Ramadan Kareem</div>
+        <p>Liens rapides | Copyright © 2026</p>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="floating-whatsapp">
+        <a href="https://wa.me/663396697?text=Bonjour%2C%20je%20souhaite%20commander." class="btn-whatsapp">💬 WhatsApp</a>
+    </div>
+
+    <script>
+        // Countdown Timer (Exemple pour une date fictive de Ramadan)
+        const countdownDate = new Date('2024-03-11T00:00:00').getTime();
+        const timerElement = document.getElementById('countdown-timer');
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                timerElement.innerHTML = `${days}j ${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                timerElement.innerHTML = "Ramadan a commencé !";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
